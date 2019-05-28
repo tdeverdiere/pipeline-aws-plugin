@@ -26,6 +26,7 @@ This plugins adds Jenkins pipeline steps to interact with the AWS API.
 * [cfnDeleteStackSet](#cfndeletestackset)
 * [snsPublish](#snspublish)
 * [deployAPI](#deployapi)
+* [cdRegisterRevision](#cdRegisterRevision)
 * [cdCreateDeployment](#cdCreateDeployment)
 * [awaitDeploymentCompletion](#awaitdeploymentcompletion)
 * [listAWSAccounts](#listawsaccounts)
@@ -530,6 +531,15 @@ Additionally you can specify a description and stage variables.
 ```groovy
 deployAPI(api:'myApiId', stage:'Prod', description:"Build: ${env.BUILD_ID}", variables:['key=value'])
 ```
+
+## cdRegisterRevision
+Register a revision of an application with Code Deploy
+
+```groovy
+def message = cdRegisterRevision(applicationName:'sample-app', bucketName:"delivery", key:"prod/sample-app-version-1.0.0.zip")
+```
+
+It returns a message indicating the result
 
 ## cdCreateDeployment
 Deploys an application with Code Deploy
